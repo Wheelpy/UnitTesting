@@ -7,7 +7,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage --collectCoverageFrom=src/data_handlers/user_data_handler.js --verbose",
     "coverage:html": "jest --coverage --collectCoverageFrom=src/data_handlers/user_data_handler.js --coverageReporters=html",
-    "prepare": "husky install",
     "start-server": "node ./src/server/server.js",
     "eslint": "eslint ./"
   },
