@@ -21,7 +21,11 @@
     "url": "https://github.com/stranger2626/unit-testing-with-mocks-home-task/issues"
   },
   "homepage": "https://github.com/stranger2626/unit-testing-with-mocks-home-task#readme",
-  
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test:coverage"
+    }
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1"
