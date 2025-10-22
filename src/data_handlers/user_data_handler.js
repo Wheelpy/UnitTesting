@@ -1,4 +1,4 @@
-const axios = require('axios').default
+const axios = require("axios").default;
 
 /**
  *
@@ -10,8 +10,8 @@ class UserDataHandler {
    *Creates an instance of UserDataHandler.
    * @memberof UserDataHandler
    */
-  constructor () {
-    this.users = []
+  constructor() {
+    this.users = [];
   }
 
   /**
@@ -19,11 +19,13 @@ class UserDataHandler {
    * @return {Promise} if successful updates users array of the calass instance
    * @memberof UserDataHandler
    */
-  async loadUsers () {
-    const response = await axios.get('http://localhost:3000/users').catch(err => {
-      throw new Error(`Failed to load users data: ${err}`)
-    })
-    this.users = response.data
+  async loadUsers() {
+    const response = await axios
+      .get("http://localhost:3000/users")
+      .catch((err) => {
+        throw new Error(`Failed to load users data: ${err}`);
+      });
+    this.users = response.data;
   }
 
   /**
@@ -32,11 +34,11 @@ class UserDataHandler {
    * @return {String} a string containing all the users emails separated by a semicolon
    * @memberof UserDataHandler
    */
-  getUserEmailsList () {
-    if (this.users.length === 0) throw new Error('No users loaded!')
-    const arrayOfEmails = this.users.map(user => user.email)
-    const listOfUSerEmails = arrayOfEmails.join(';')
-    return listOfUSerEmails
+  getUserEmailsList() {
+    if (this.users.length === 0) throw new Error("No users loaded!");
+    const arrayOfEmails = this.users.map((user) => user.email);
+    const listOfUSerEmails = arrayOfEmails.join(";");
+    return listOfUSerEmails;
   }
 
   /**
@@ -45,8 +47,8 @@ class UserDataHandler {
    * @return {Number} current number of users in class instance
    * @memberof UserDataHandler
    */
-  getNumberOfUsers () {
-    return this.users.length
+  getNumberOfUsers() {
+    return this.users.length;
   }
 
   /**
@@ -57,15 +59,15 @@ class UserDataHandler {
    * @return {Boolean} returns true if user object matches all provided search parameters
    * @memberof UserDataHandler
    */
-  isMatchingAllSearchParams (user, searchParamsObject) {
-    let isMatching = true
+  isMatchingAllSearchParams(user, searchParamsObject) {
+    let isMatching = true;
     for (const searchParam in searchParamsObject) {
       if (user[searchParam] !== searchParamsObject[searchParam]) {
-        isMatching = false
+        isMatching = false;
       }
-      if (isMatching === false) break
+      if (isMatching === false) break;
     }
-    return isMatching
+    return isMatching;
   }
 
   /**
@@ -75,13 +77,15 @@ class UserDataHandler {
    * @return {Array<Object>} array of objects that match provided search parameters
    * @memberof UserDataHandler
    */
-  findUsers (searchParamsObject) {
-    if (!searchParamsObject) throw new Error('No search parameters provoded!')
-    if (this.users.length === 0) throw new Error('No users loaded!')
-    const matchingUsers = this.users.filter(user => this.isMatchingAllSearchParams(user, searchParamsObject))
-    if (matchingUsers.length === 0) throw new Error('No matching users found!')
-    return matchingUsers
+  findUsers(searchParamsObject) {
+    if (!searchParamsObject) throw new Error("No search parameters provoded!");
+    if (this.users.length === 0) throw new Error("No users loaded!");
+    const matchingUsers = this.users.filter((user) =>
+      this.isMatchingAllSearchParams(user, searchParamsObject)
+    );
+    if (matchingUsers.length === 0) throw new Error("No matching users found!");
+    return matchingUsers;
   }
 }
 
-module.exports = UserDataHandler
+module.exports = UserDataHandler;
