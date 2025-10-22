@@ -21,11 +21,7 @@
     "url": "https://github.com/stranger2626/unit-testing-with-mocks-home-task/issues"
   },
   "homepage": "https://github.com/stranger2626/unit-testing-with-mocks-home-task#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run eslint"
-    }
-  },
+  
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1"
